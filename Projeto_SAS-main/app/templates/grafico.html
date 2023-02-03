@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+</head>
+<body onload="gerargrafico()">
+    <div id = "grafico"></div>
+    
+    <script>
+    function gerargrafico(){
+
+        var estados = ["Acre","Alagoas","Amazonas","Amapá","Bahia","Ceará","Distrito Federal","Espírito Santo","Goiás","Maranhão","Mato Grosso","Mato Grosso do Sul","Minas Gerais","Pará","Paraíba","Paraná","Pernambuco","Piauí","Rio de Janeiro","Rio Grande do Norte","Rio Grande do Sul","Rondônia","Roraíma","Santa Catarina","São Paulo","Sergipe","Tocantins",]
+        var meses_estados = [];
+        var aux = 0;
+        posicao = 1;
+        var graf = [];
+            {%  for valor in chave %} 
+                meses_estados.push({{ valor }})
+                if (posicao % 12 == 0) {
+                    graf[Math.trunc(posicao/12)-1] = {
+                        x: ["Janeiro","Fevereiro","Março","Abril","Maio","Junho","Julho","Agosto","Setembro","Outubro","Novembro","Dezembro"],
+                        y: meses_estados,
+                        mode: "lines+markers",
+                        type: "scatter",
+                        name: estados[Math.trunc(posicao/12)-1]
+
+                    }
+                    meses_estados = [];
+                }
+                posicao++;
+            {% endfor %}
+        var data = [graf[0],graf[1],graf[2],graf[3],graf[4],graf[5],graf[6],graf[7],graf[8],graf[9],graf[10],graf[11],graf[12],graf[13],graf[14],graf[15],graf[16],graf[17],graf[18],graf[19],graf[20],graf[21],graf[22],graf[23],graf[24],graf[25],graf[26]];
+        var layout = {
+            autosize: false,
+            width: 1200,
+            height: 600,
+            margin: {
+            l: 50,
+            r: 50,
+            b: 100,
+            t: 100,
+            pad: 4
+                    },
+            paper_bgcolor: '#7f7f7f',
+            plot_bgcolor: '#c7c7c7'
+        };
+
+        Plotly.newPlot('grafico',data,layout);
+    }
+    </script>
+</body>
+</html>
