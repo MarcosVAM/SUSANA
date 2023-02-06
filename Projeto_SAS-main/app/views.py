@@ -1,6 +1,6 @@
 from multiprocessing import context
 from django.shortcuts import render, redirect
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpRequest
 from django.contrib.auth import login, logout, authenticate
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import get_object_or_404
@@ -18,7 +18,119 @@ from django.contrib.auth.models import User
 
 from customauth.models import MyUser
 from customauth.forms import UserChangeForm
+
+#bot e grafico
+import pandas as pd
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.support.select import Select
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+import time
+import codecs
+import os
+
 # Create your views here.
+
+#grafico
+
+# parte do código do gráfico 
+def grafico(request):
+    pacote = {}
+    vetor = []
+    a = 0
+    for i in range(27):
+        for mes in range(12):
+            df = pd.read_csv(f'C:/Users/marco/Documents/GitHub/susana-bot/teste/EstadosFinal/estado{i+1}/hipertensao_diabetes/mes'+str(mes+1)+'.csv', encoding="mbcs") 
+            df2 = df.max()
+            df3 = df2.max()
+            dff = df3[-2::]
+            vetor.append (dff)
+            a  += 1
+    pacote = {"chave": vetor}
+    print(len(vetor))
+    return render(request, 'grafico.html', pacote)
+
+#funções do bot
+def estados(nome,driver):
+    botao =  driver.find_element("name", nome)
+    botao.click()
+
+def seleciona(request):
+    return render(request, "selecionar.html")
+
+def campo(id, index,driver):
+    select_element = driver.find_element(By.ID,id)
+    select_object = Select(select_element)
+    select_object.select_by_index(index)
+
+
+#selecionando o conteudo das tabelas
+def selecionador(id, index, deselect,driver):
+    select_element = driver.find_element(By.ID,id)
+    select_object = Select(select_element)
+    select_object.select_by_index(index)
+#caso o select seja multiple colocar true
+    if deselect:
+       select_object.deselect_by_index(0)
+
+
+#selecionar tabelade acordo com o index(so precisa mudar os numeros para mudar o conteudo baixado)
+
+
+#clicar no botao
+
+
+def clicker_by_name(nome,driver):    
+    botao =  driver.find_element("name", nome)
+    botao.click()
+
+
+def bot(request, v1, v2):
+    driver = webdriver.Chrome("chromedriver.exe")
+    driver.get("https://datasus.saude.gov.br/acesso-a-informacao/hipertensao-e-diabetes-hiperdia/")
+    for i in range(v2-v1):
+        estados("radiobutton",driver)
+        campo("mySelect", v1+i,driver)
+        for col in range (3):
+            if i == 3 or i == 22:
+                break
+            for con in range (4):
+                for mes in range (12):
+                    selecionador("L", 0, False,driver)
+                    selecionador("C", (col+1), False,driver)       
+                    if con == 0:   
+                        selecionador("I", (con), False,driver) 
+                    else:
+                        selecionador("I", (con), True,driver)
+                    if i+v1 == 1 or i+v1 == 4 or i+v1 == 17 or i+v1 == 20 or i+v1 == 22:
+                        selecionador("A", (27+mes), True,driver)
+                    elif i+v1 == 7:
+                        selecionador("A", (7+mes), True,driver)
+                    elif i+v1 == 23:
+                        selecionador("A", (26+mes), True,driver)
+                    else:
+                        selecionador("A", (28+mes), True,driver)
+
+                    time.sleep(1)   
+                    clicker_by_name("mostre",driver)
+                    time.sleep(1)
+                    while True:
+                        try:
+                            driver.find_element(By.XPATH,"//tbody//tr//td[@class='botao_opcao']").click()
+                            time.sleep(1)
+                            break
+                        except:
+                            time.sleep(10)
+                            driver.refresh()
+                    time.sleep(4)
+                    time.sleep(4)
+                    driver.back()
+                    driver.refresh()
+        driver.get("https://datasus.saude.gov.br/acesso-a-informacao/hipertensao-e-diabetes-hiperdia/")
+
+
 
 def home(request, LoginRequiredMixin):
     return render(request, LoginRequiredMixin, "index.html")

@@ -20,13 +20,19 @@ from app.models import models
 from app.views import index, Lista_Ruas, Create_Ruas, Update_Ruas, Delete_Ruas, home, edit_profile
 from app.views import Lista_Festivais, Create_Festivais, Update_Festivais, Delete_Festivais, Add_Participante, Equipe
 from django.urls import include, path
+from app import views
 
 urlpatterns = [
     path('', index, name='index'),
     path('home', home),
-
     path('registro/', include('customauth.urls')), 
     path('edit_profile/<int:pk>/', edit_profile, name='url_edit_profile'),
+
+    #urls bot e gráfico
+    path('grafico/', views.grafico, name="grafico"),
+    path("bot/<int:v1>/<int:v2>", views.bot, name = "bot"),
+    path("selecionar/", views.seleciona, name = "selecionar"),
+
 
     #CRUD URL RUAS
     path('Ruas/', Lista_Ruas, name='url_ruas'),
