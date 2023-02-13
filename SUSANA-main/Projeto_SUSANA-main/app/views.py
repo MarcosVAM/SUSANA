@@ -43,6 +43,7 @@ def graficoHipertensaoDiabetes(request):
     a = 0
     for i in range(27):
         for mes in range(12):
+            #mude o caminho de onde estao as tabelas
             df = pd.read_csv(f'C:/Users/marco/Downloads/EstadosFinal/estado{i+1}/hipertensao_diabetes/mes'+str(mes+1)+'.csv', encoding="mbcs") 
             df2 = df.max()
             df3 = df2.max()
@@ -62,6 +63,7 @@ def graficoHipertensao(request):
     a = 0
     for i in range(27):
         for mes in range(12):
+            #mude o caminho de onde estao as tabelas
             df = pd.read_csv(f'C:/Users/marco/Downloads/divisao_estadual_hipertensao/estado{i+1}/mes'+str(mes+1)+'.csv', encoding="mbcs",on_bad_lines='skip') 
             df2 = df.max()
             df3 = df2.max()
@@ -81,6 +83,7 @@ def graficoDiabetesTipo1(request):
     a = 0
     for i in range(27):
         for mes in range(12):
+            #mude o caminho de onde estao as tabelas
             df = pd.read_csv(f'C:/Users/marco/Downloads/regiao_saude_diabetes_tipo1/estado{i+1}/mes'+str(mes+1)+'.csv', encoding="mbcs",on_bad_lines='skip')  
             df2 = df.max()
             df3 = df2.max()
@@ -100,6 +103,7 @@ def graficoDiabetesTipo2(request):
     a = 0
     for i in range(27):
         for mes in range(12):
+            #mude o caminho de onde estao as tabelas
             df = pd.read_csv(f'C:/Users/marco/Downloads/regiao_saude_diabetes_tipo2/estado{i+1}/mes'+str(mes+1)+'.csv', encoding="mbcs",on_bad_lines='skip')  
             df2 = df.max()
             df3 = df2.max()
@@ -201,6 +205,7 @@ def bot(request, v1, v2):
                                 time.sleep(10)
                                 driver.refresh()
                         time.sleep(4)
+                        #mude o nome do usuario para pegar a sua pasta de downloads
                         caminho = "C://Users//marco//Downloads"
                         lista_arquivos = os.listdir(caminho)
                         lista_datas = []
@@ -211,7 +216,7 @@ def bot(request, v1, v2):
                                 lista_datas.append((data, arquivo))
                                 lista_datas.sort(reverse=True)
                                 ultimo_arquivo = lista_datas[0]
-                                
+                                #mude o nome do usuario para pegar a sua pasta de downloads em todos os ifs abaixo
                                 if col == 0 and con == 0:
                                     os.rename(f'C:/Users/marco/Downloads/{ultimo_arquivo[1]}', f'C:/Users/marco/Downloads/estado'+str(v1+i)+'_regiao_saude_hipertensao_mes'+str(12-mes)+'.csv')
                                 if col == 0 and con == 1:
@@ -280,6 +285,7 @@ def bot(request, v1, v2):
                             except:
                                 time.sleep(10)
                                 driver.refresh()
+                        #mude o nome do usuario para pegar a sua pasta de downloads
                         caminho = "C://Users//marco//Downloads"
                         lista_arquivos = os.listdir(caminho)
                         lista_datas = []
@@ -290,7 +296,7 @@ def bot(request, v1, v2):
                                 lista_datas.append((data, arquivo))
                                 lista_datas.sort(reverse=True)
                                 ultimo_arquivo = lista_datas[0]
-                                
+                                #mude o nome do usuario para pegar a sua pasta de downloads em todos os ifs abaixo
                                 if col == 0 and con == 0:
                                     os.rename(f'C:/Users/marco/Downloads/{ultimo_arquivo[1]}', f'C:/Users/marco/Downloads/estado'+str(v1+i)+'_regiao_saude_hipertensao_mes'+str(12-mes)+'.csv')
                                 if col == 0 and con == 1:
