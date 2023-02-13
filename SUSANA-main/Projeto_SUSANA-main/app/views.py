@@ -43,7 +43,7 @@ def graficoHipertensaoDiabetes(request):
     a = 0
     for i in range(27):
         for mes in range(12):
-            df = pd.read_csv(f'C:/Users/Misac/Downloads/EstadosFinal/estado{i+1}/hipertensao_diabetes/mes'+str(mes+1)+'.csv', encoding="mbcs") 
+            df = pd.read_csv(f'C:/Users/marco/Downloads/EstadosFinal/estado{i+1}/hipertensao_diabetes/mes'+str(mes+1)+'.csv', encoding="mbcs") 
             df2 = df.max()
             df3 = df2.max()
             df4 = str(df3)
@@ -62,7 +62,7 @@ def graficoHipertensao(request):
     a = 0
     for i in range(27):
         for mes in range(12):
-            df = pd.read_csv(f'C:/Users/Misac/Downloads/divisao_estadual_hipertensao/estado{i+1}/mes'+str(mes+1)+'.csv', encoding="mbcs",on_bad_lines='skip') 
+            df = pd.read_csv(f'C:/Users/marco/Downloads/divisao_estadual_hipertensao/estado{i+1}/mes'+str(mes+1)+'.csv', encoding="mbcs",on_bad_lines='skip') 
             df2 = df.max()
             df3 = df2.max()
             df4 = str(df3)
@@ -81,7 +81,7 @@ def graficoDiabetesTipo1(request):
     a = 0
     for i in range(27):
         for mes in range(12):
-            df = pd.read_csv(f'C:/Users/Misac/Downloads/regiao_saude_diabetes_tipo1/estado{i+1}/mes'+str(mes+1)+'.csv', encoding="mbcs",on_bad_lines='skip')  
+            df = pd.read_csv(f'C:/Users/marco/Downloads/regiao_saude_diabetes_tipo1/estado{i+1}/mes'+str(mes+1)+'.csv', encoding="mbcs",on_bad_lines='skip')  
             df2 = df.max()
             df3 = df2.max()
             df4 = str(df3)
@@ -100,7 +100,7 @@ def graficoDiabetesTipo2(request):
     a = 0
     for i in range(27):
         for mes in range(12):
-            df = pd.read_csv(f'C:/Users/Misac/Downloads/regiao_saude_diabetes_tipo2/estado{i+1}/mes'+str(mes+1)+'.csv', encoding="mbcs",on_bad_lines='skip')  
+            df = pd.read_csv(f'C:/Users/marco/Downloads/regiao_saude_diabetes_tipo2/estado{i+1}/mes'+str(mes+1)+'.csv', encoding="mbcs",on_bad_lines='skip')  
             df2 = df.max()
             df3 = df2.max()
             df4 = str(df3)
@@ -201,7 +201,7 @@ def bot(request, v1, v2):
                                 time.sleep(10)
                                 driver.refresh()
                         time.sleep(4)
-                        caminho = "C://Users//Misac//Downloads"
+                        caminho = "C://Users//marco//Downloads"
                         lista_arquivos = os.listdir(caminho)
                         lista_datas = []
                         for arquivo in lista_arquivos:
@@ -213,29 +213,29 @@ def bot(request, v1, v2):
                                 ultimo_arquivo = lista_datas[0]
                                 
                                 if col == 0 and con == 0:
-                                    os.rename(f'C:/Users/Misac/Downloads/{ultimo_arquivo[1]}', f'C:/Users/Misac/Downloads/estado'+str(v1+i)+'_regiao_saude_hipertensao_mes'+str(12-mes)+'.csv')
+                                    os.rename(f'C:/Users/marco/Downloads/{ultimo_arquivo[1]}', f'C:/Users/marco/Downloads/estado'+str(v1+i)+'_regiao_saude_hipertensao_mes'+str(12-mes)+'.csv')
                                 if col == 0 and con == 1:
-                                    os.rename(f'C:/Users/Misac/Downloads/{ultimo_arquivo[1]}', f'C:/Users/Misac/Downloads/estado'+str(i+v1)+'_regiao_saude_diabetes_tipo1_mes'+str(12-mes)+'.csv')
+                                    os.rename(f'C:/Users/marco/Downloads/{ultimo_arquivo[1]}', f'C:/Users/marco/Downloads/estado'+str(i+v1)+'_regiao_saude_diabetes_tipo1_mes'+str(12-mes)+'.csv')
                                 if col == 0 and con == 2:
-                                    os.rename(f'C:/Users/Misac/Downloads/{ultimo_arquivo[1]}', f'C:/Users/Misac/Downloads/estado'+str(i+v1)+'_regiao_saude_diabetes_tipo2_mes'+str(12-mes)+'.csv')
+                                    os.rename(f'C:/Users/marco/Downloads/{ultimo_arquivo[1]}', f'C:/Users/marco/Downloads/estado'+str(i+v1)+'_regiao_saude_diabetes_tipo2_mes'+str(12-mes)+'.csv')
                                 if col == 0 and con == 3:
-                                    os.rename(f'C:/Users/Misac/Downloads/{ultimo_arquivo[1]}', f'C:/Users/Misac/Downloads/estado'+str(i+v1)+'_regiao_saude_hipertensao_diabetes_mes'+str(12-mes)+'.csv')
+                                    os.rename(f'C:/Users/marco/Downloads/{ultimo_arquivo[1]}', f'C:/Users/marco/Downloads/estado'+str(i+v1)+'_regiao_saude_hipertensao_diabetes_mes'+str(12-mes)+'.csv')
                                 if col == 1 and con == 0:
-                                    os.rename(f'C:/Users/Misac/Downloads/{ultimo_arquivo[1]}', f'C:/Users/Misac/Downloads/estado'+str(i+v1)+'_macrorregiao_saude_hipertensao_mes'+str(12-mes)+'.csv')
+                                    os.rename(f'C:/Users/marco/Downloads/{ultimo_arquivo[1]}', f'C:/Users/marco/Downloads/estado'+str(i+v1)+'_macrorregiao_saude_hipertensao_mes'+str(12-mes)+'.csv')
                                 if col == 1 and con == 1:
-                                    os.rename(f'C:/Users/Misac/Downloads/{ultimo_arquivo[1]}', f'C:/Users/Misac/Downloads/estado'+str(i+v1)+'_macrorregiao_saude_diabetes_tipo1_mes'+str(12-mes)+'.csv')
+                                    os.rename(f'C:/Users/marco/Downloads/{ultimo_arquivo[1]}', f'C:/Users/marco/Downloads/estado'+str(i+v1)+'_macrorregiao_saude_diabetes_tipo1_mes'+str(12-mes)+'.csv')
                                 if col == 1 and con == 2:
-                                    os.rename(f'C:/Users/Misac/Downloads/{ultimo_arquivo[1]}', f'C:/Users/Misac/Downloads/estado'+str(i+v1)+'_macrorregiao_saude_diabetes_tipo2_mes'+str(12-mes)+'.csv')
+                                    os.rename(f'C:/Users/marco/Downloads/{ultimo_arquivo[1]}', f'C:/Users/marco/Downloads/estado'+str(i+v1)+'_macrorregiao_saude_diabetes_tipo2_mes'+str(12-mes)+'.csv')
                                 if col == 1 and con == 3:
-                                    os.rename(f'C:/Users/Misac/Downloads/{ultimo_arquivo[1]}', f'C:/Users/Misac/Downloads/estado'+str(i+v1)+'_macrorregiao_saude_hipertensao_diabetes_mes'+str(12-mes)+'.csv')
+                                    os.rename(f'C:/Users/marco/Downloads/{ultimo_arquivo[1]}', f'C:/Users/marco/Downloads/estado'+str(i+v1)+'_macrorregiao_saude_hipertensao_diabetes_mes'+str(12-mes)+'.csv')
                                 if col == 2 and con == 0:
-                                    os.rename(f'C:/Users/Misac/Downloads/{ultimo_arquivo[1]}', f'C:/Users/Misac/Downloads/estado'+str(i+v1)+'_divisao_administradual_hipertensao_mes'+str(12-mes)+'.csv')
+                                    os.rename(f'C:/Users/marco/Downloads/{ultimo_arquivo[1]}', f'C:/Users/marco/Downloads/estado'+str(i+v1)+'_divisao_administradual_hipertensao_mes'+str(12-mes)+'.csv')
                                 if col == 2 and con == 1:
-                                    os.rename(f'C:/Users/Misac/Downloads/{ultimo_arquivo[1]}', f'C:/Users/Misac/Downloads/estado'+str(i+v1)+'_divisao_administradual_diabetes_tipo1_mes'+str(12-mes)+'.csv')
+                                    os.rename(f'C:/Users/marco/Downloads/{ultimo_arquivo[1]}', f'C:/Users/marco/Downloads/estado'+str(i+v1)+'_divisao_administradual_diabetes_tipo1_mes'+str(12-mes)+'.csv')
                                 if col == 2 and con == 2:
-                                    os.rename(f'C:/Users/Misac/Downloads/{ultimo_arquivo[1]}', f'C:/Users/Misac/Downloads/estado'+str(i+v1)+'_divisao_administradual_diabetes_tipo2_mes'+str(12-mes)+'.csv')
+                                    os.rename(f'C:/Users/marco/Downloads/{ultimo_arquivo[1]}', f'C:/Users/marco/Downloads/estado'+str(i+v1)+'_divisao_administradual_diabetes_tipo2_mes'+str(12-mes)+'.csv')
                                 if col == 2 and con == 3:
-                                    os.rename(f'C:/Users/Misac/Downloads/{ultimo_arquivo[1]}', f'C:/Users/Misac/Downloads/estado'+str(i+v1)+'_divisao_administradual_hipertensao_diabetes_mes'+str(12-mes)+'.csv')
+                                    os.rename(f'C:/Users/marco/Downloads/{ultimo_arquivo[1]}', f'C:/Users/marco/Downloads/estado'+str(i+v1)+'_divisao_administradual_hipertensao_diabetes_mes'+str(12-mes)+'.csv')
                                 break
                         time.sleep(4)
                         driver.back()
@@ -280,7 +280,7 @@ def bot(request, v1, v2):
                             except:
                                 time.sleep(10)
                                 driver.refresh()
-                        caminho = "C://Users//Misac//Downloads"
+                        caminho = "C://Users//marco//Downloads"
                         lista_arquivos = os.listdir(caminho)
                         lista_datas = []
                         for arquivo in lista_arquivos:
@@ -292,29 +292,29 @@ def bot(request, v1, v2):
                                 ultimo_arquivo = lista_datas[0]
                                 
                                 if col == 0 and con == 0:
-                                    os.rename(f'C:/Users/Misac/Downloads/{ultimo_arquivo[1]}', f'C:/Users/Misac/Downloads/estado'+str(v1+i)+'_regiao_saude_hipertensao_mes'+str(12-mes)+'.csv')
+                                    os.rename(f'C:/Users/marco/Downloads/{ultimo_arquivo[1]}', f'C:/Users/marco/Downloads/estado'+str(v1+i)+'_regiao_saude_hipertensao_mes'+str(12-mes)+'.csv')
                                 if col == 0 and con == 1:
-                                    os.rename(f'C:/Users/Misac/Downloads/{ultimo_arquivo[1]}', f'C:/Users/Misac/Downloads/estado'+str(i+v1)+'_regiao_saude_diabetes_tipo1_mes'+str(12-mes)+'.csv')
+                                    os.rename(f'C:/Users/marco/Downloads/{ultimo_arquivo[1]}', f'C:/Users/marco/Downloads/estado'+str(i+v1)+'_regiao_saude_diabetes_tipo1_mes'+str(12-mes)+'.csv')
                                 if col == 0 and con == 2:
-                                    os.rename(f'C:/Users/Misac/Downloads/{ultimo_arquivo[1]}', f'C:/Users/Misac/Downloads/estado'+str(i+v1)+'_regiao_saude_diabetes_tipo2_mes'+str(12-mes)+'.csv')
+                                    os.rename(f'C:/Users/marco/Downloads/{ultimo_arquivo[1]}', f'C:/Users/marco/Downloads/estado'+str(i+v1)+'_regiao_saude_diabetes_tipo2_mes'+str(12-mes)+'.csv')
                                 if col == 0 and con == 3:
-                                    os.rename(f'C:/Users/Misac/Downloads/{ultimo_arquivo[1]}', f'C:/Users/Misac/Downloads/estado'+str(i+v1)+'_regiao_saude_hipertensao_diabetes_mes'+str(12-mes)+'.csv')
+                                    os.rename(f'C:/Users/marco/Downloads/{ultimo_arquivo[1]}', f'C:/Users/marco/Downloads/estado'+str(i+v1)+'_regiao_saude_hipertensao_diabetes_mes'+str(12-mes)+'.csv')
                                 if col == 1 and con == 0:
-                                    os.rename(f'C:/Users/Misac/Downloads/{ultimo_arquivo[1]}', f'C:/Users/Misac/Downloads/estado'+str(i+v1)+'_macrorregiao_saude_hipertensao_mes'+str(12-mes)+'.csv')
+                                    os.rename(f'C:/Users/marco/Downloads/{ultimo_arquivo[1]}', f'C:/Users/marco/Downloads/estado'+str(i+v1)+'_macrorregiao_saude_hipertensao_mes'+str(12-mes)+'.csv')
                                 if col == 1 and con == 1:
-                                    os.rename(f'C:/Users/Misac/Downloads/{ultimo_arquivo[1]}', f'C:/Users/Misac/Downloads/estado'+str(i+v1)+'_macrorregiao_saude_diabetes_tipo1_mes'+str(12-mes)+'.csv')
+                                    os.rename(f'C:/Users/marco/Downloads/{ultimo_arquivo[1]}', f'C:/Users/marco/Downloads/estado'+str(i+v1)+'_macrorregiao_saude_diabetes_tipo1_mes'+str(12-mes)+'.csv')
                                 if col == 1 and con == 2:
-                                    os.rename(f'C:/Users/Misac/Downloads/{ultimo_arquivo[1]}', f'C:/Users/Misac/Downloads/estado'+str(i+v1)+'_macrorregiao_saude_diabetes_tipo2_mes'+str(12-mes)+'.csv')
+                                    os.rename(f'C:/Users/marco/Downloads/{ultimo_arquivo[1]}', f'C:/Users/marco/Downloads/estado'+str(i+v1)+'_macrorregiao_saude_diabetes_tipo2_mes'+str(12-mes)+'.csv')
                                 if col == 1 and con == 3:
-                                    os.rename(f'C:/Users/Misac/Downloads/{ultimo_arquivo[1]}', f'C:/Users/Misac/Downloads/estado'+str(i+v1)+'_macrorregiao_saude_hipertensao_diabetes_mes'+str(12-mes)+'.csv')
+                                    os.rename(f'C:/Users/marco/Downloads/{ultimo_arquivo[1]}', f'C:/Users/marco/Downloads/estado'+str(i+v1)+'_macrorregiao_saude_hipertensao_diabetes_mes'+str(12-mes)+'.csv')
                                 if col == 2 and con == 0:
-                                    os.rename(f'C:/Users/Misac/Downloads/{ultimo_arquivo[1]}', f'C:/Users/Misac/Downloads/estado'+str(i+v1)+'_divisao_administradual_hipertensao_mes'+str(12-mes)+'.csv')
+                                    os.rename(f'C:/Users/marco/Downloads/{ultimo_arquivo[1]}', f'C:/Users/marco/Downloads/estado'+str(i+v1)+'_divisao_administradual_hipertensao_mes'+str(12-mes)+'.csv')
                                 if col == 2 and con == 1:
-                                    os.rename(f'C:/Users/Misac/Downloads/{ultimo_arquivo[1]}', f'C:/Users/Misac/Downloads/estado'+str(i+v1)+'_divisao_administradual_diabetes_tipo1_mes'+str(12-mes)+'.csv')
+                                    os.rename(f'C:/Users/marco/Downloads/{ultimo_arquivo[1]}', f'C:/Users/marco/Downloads/estado'+str(i+v1)+'_divisao_administradual_diabetes_tipo1_mes'+str(12-mes)+'.csv')
                                 if col == 2 and con == 2:
-                                    os.rename(f'C:/Users/Misac/Downloads/{ultimo_arquivo[1]}', f'C:/Users/Misac/Downloads/estado'+str(i+v1)+'_divisao_administradual_diabetes_tipo2_mes'+str(12-mes)+'.csv')
+                                    os.rename(f'C:/Users/marco/Downloads/{ultimo_arquivo[1]}', f'C:/Users/marco/Downloads/estado'+str(i+v1)+'_divisao_administradual_diabetes_tipo2_mes'+str(12-mes)+'.csv')
                                 if col == 2 and con == 3:
-                                    os.rename(f'C:/Users/Misac/Downloads/{ultimo_arquivo[1]}', f'C:/Users/Misac/Downloads/estado'+str(i+v1)+'_divisao_administradual_hipertensao_diabetes_mes'+str(12-mes)+'.csv')
+                                    os.rename(f'C:/Users/marco/Downloads/{ultimo_arquivo[1]}', f'C:/Users/marco/Downloads/estado'+str(i+v1)+'_divisao_administradual_hipertensao_diabetes_mes'+str(12-mes)+'.csv')
                                 break
                         time.sleep(4)
                         driver.back()
